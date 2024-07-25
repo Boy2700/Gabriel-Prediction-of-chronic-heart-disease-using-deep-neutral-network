@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Prediction System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            max-width: 1200px;
+            /* Adjust the max-width as needed */
+        }
+        
+        .login-box {
+            padding: 30px;
+            /* Adjust padding for better spacing */
+        }
+        
+        .symptoms-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .symptom-item {
+            flex: 1 1 calc(50% - 15px);
+            /* Adjust the width for better fit */
+            display: flex;
+            align-items: center;
+        }
+        
+        .symptom-item input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12 login-box">
+                <h1>Heart Disease Prediction System</h1>
+                <div class="container">
+                    <form id="predictionForm">
+                        <div class="form-group">
+
+                            <label for="name" class="badge badge-primary" style="background-color: black; color: white;">Full Name:</label>
+
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="badge badge-primary" style="background-color: black; color: white;">Age:</label>
+
+                            <input type="number" class="form-control" id="age" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="badge badge-primary" style="background-color: black; color: white;">Address:</label>
+                            <input type="text" class="form-control" id="address" required>
+                        </div>
+                        <h2>Symptoms:</h2>
+                        <p>(Select all that apply to You)</p>
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Heart Disease Symptoms</legend>
+                                <div class="symptoms-row">
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom1" value="chest_pain">
+                                        <label for="symptom1">Chest Pain or Discomfort (Angina)</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom2" value="shortness_of_breath">
+                                        <label for="symptom2">Shortness of Breath</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom3" value="fatigue">
+                                        <label for="symptom3">Fatigue</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom4" value="palpitations">
+                                        <label for="symptom4">Palpitations</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom5" value="swelling">
+                                        <label for="symptom5">Swelling (Edema)</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom6" value="dizziness">
+                                        <label for="symptom6">Dizziness or Lightheadedness</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom7" value="nausea">
+                                        <label for="symptom7">Nausea or Indigestion</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom8" value="body_pain">
+                                        <label for="symptom8">Pain in Other Parts of the Body</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom9" value="sweating">
+                                        <label for="symptom9">Sweating</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom10" value="cough">
+                                        <label for="symptom10">Persistent Cough or Wheezing</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom11" value="fainting">
+                                        <label for="symptom11">Fainting or Syncope</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom12" value="ankle_swelling">
+                                        <label for="symptom12">Ankle Swelling</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom13" value="irregular_heartbeat">
+                                        <label for="symptom13">Irregular Heartbeat</label>
+                                    </div>
+                                    <div class="symptom-item">
+                                        <input type="checkbox" id="symptom14" value="pain_in_neck">
+                                        <label for="symptom14">Pain in Neck, Jaw, Throat, or Upper Abdomen</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-outline-success">Predict</button>
+                            <button type="button" class="btn btn-warning" id="resetButton">Reset</button>
+                            <button type="button" class="btn btn-outline-danger" id="logoutButton">Log Out</button>
+
+
+                        </center>
+                    </form>
+
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Heart Disease Prediction Result</h5>
+                            <div class="border" style="background-color: #c8dce6;" role="alert" id="result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <p>Email:<br> info@HeartDiagnosis.com</p>
+                    <p>Phone:<br> +234 7086 185 671 </p>
+                </div>
+                <hr>
+                <div class="col-lg-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../bayes/prevention.html">How to prevent Heart Disease</a></li>
+                        <li><a href="https://wa.link/6j551o">Contact me</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="col-lg-4">
+                    <h5>Connect on WhatsApp</h5>
+                    <p>Get in touch with us on WhatsApp for instant support</p>
+                    <a href="https://wa.link/6j551o"><button type="button" class="btn btn-light"><i class="fab fa-whatsapp"></i> Chat Now</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-white mt-3">
+            <p style="color: black;">All rights reserved &copy; 2024 Chronic Heart Disease Prediction System || Gabriel Tersee Tsaviv</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
